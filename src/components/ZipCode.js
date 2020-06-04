@@ -25,7 +25,7 @@ class ZipCode extends Component {
       let wages = place.TotalWages;
       return (
         <>
-          <div className="card inline" style={{ width: "18rem" }}>
+          <div className="card inline">
             <div className="card-header">{locationText}</div>
             <ul className="list-group list-group-flush">
               <li className="list-group-item">State: {state}</li>
