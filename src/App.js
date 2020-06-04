@@ -1,26 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import ZipCode from "./components/ZipCode";
+import "./App.css";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { zipcode: null };
+  }
+
+  handleChange = (e) => {
+    this.setState({ zipcode: e.target.value });
+  };
+
+  showZipCode = () => {
+    if (this.state.zipcode !== null) {
+      if (this.state.zipcode.length === 5) {
+        return <ZipCode zipcode={this.state.zipcode} />;
+      }
+    }
+  };
+
+  render() {
+    return (
+      <>
+        <h1 className="App">Zip Code Search</h1>
+        <input className="App" type="text" onChange={this.handleChange}></input>
+        {this.showZipCode()}
+      </>
+    );
+  }
 }
 
 export default App;
